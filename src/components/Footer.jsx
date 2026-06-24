@@ -9,7 +9,7 @@ export default function Footer() {
       const link = e.target.closest('a');
       if (link && link.href) {
         const url = new URL(link.href);
-        if (url.origin === window.location.origin || url.origin === 'https://placynt.com') {
+        if (url.origin === window.location.origin || url.origin === 'https://knighterrant.com') {
           e.preventDefault();
           let path = url.pathname;
           navigate(path);

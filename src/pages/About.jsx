@@ -1,4 +1,4 @@
-import { Star, TrendingUp, Shield, MapPin, Clock, Quote } from 'lucide-react'
+import { Star, MapPin, Clock } from 'lucide-react'
 import useReveal from '../hooks/useReveal.js'
 import './About.css'
 
@@ -17,52 +17,87 @@ export default function About() {
           <div className="page-hero__shape page-hero__shape--2"></div>
         </div>
         <div className="container page-hero__inner">
-          <div className="section-label">About Placynt</div>
+          <div className="section-label">About Knight Errant</div>
           <h1>Connecting Talent with Opportunity</h1>
           <p className="page-hero__subtitle">
-            Placynt: Your Partner in Recruitment Excellence.
+            Knight Errant: Your Partner in Recruitment Excellence.
           </p>
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="section about-stats" id="about-stats">
+      {/* Stats + Intro */}
+      <section className="section about-intro" id="about-intro">
         <div className="container">
           <RevealSection>
-            <div className="about-stats__grid">
-              <div className="about-stat-card about-stat-card--primary">
-                <TrendingUp size={24} className="about-stat-card__bg-icon" />
-                <div className="about-stat-card__number">150+</div>
-                <div className="about-stat-card__label">Trusted by Employers</div>
+            <div className="about-intro__grid">
+              <div className="about-intro__left">
+                <h2 className="about-intro__title">Connecting Talent with Opportunity</h2>
               </div>
-              <div className="about-stat-card about-stat-card--accent">
-                <Shield size={24} className="about-stat-card__bg-icon" />
-                <div className="about-stat-card__number">15</div>
-                <div className="about-stat-card__label">Top Candidates</div>
+              <div className="about-intro__right">
+                <p className="about-intro__tagline">Knight Errant: Your Partner in Recruitment Excellence.</p>
+                <div className="about-stats-row">
+                  <div className="about-stat-inline">
+                    <div className="about-stat-inline__number">150+</div>
+                    <div className="about-stat-inline__label">Top Candidates</div>
+                  </div>
+                  <div className="about-stat-inline">
+                    <div className="about-stat-inline__number">15</div>
+                    <div className="about-stat-inline__label">Trusted by Employers</div>
+                  </div>
+                </div>
               </div>
+            </div>
+          </RevealSection>
+
+          {/* Office Image */}
+          <RevealSection>
+            <div className="about-office-img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200&q=85"
+                alt="Knight Errant Office"
+                className="about-office-img"
+                loading="lazy"
+              />
             </div>
           </RevealSection>
         </div>
       </section>
 
-      {/* Testimonial */}
-      <section className="section about-testimonial" id="about-testimonial">
+      {/* Split Testimonial */}
+      <section className="section about-split-testimonial" id="about-testimonial">
         <div className="container">
           <RevealSection>
-            <div className="testimonial-card">
-              <Quote size={40} className="testimonial-card__quote" />
-              <p className="testimonial-card__text">
-                Placynt connected me with an amazing job opportunity quickly and
-                professionally. Highly recommend their services!
-              </p>
-              <div className="testimonial-card__author">
-                <div className="testimonial-card__avatar">JD</div>
-                <div>
-                  <strong>John Doe</strong>
-                  <div className="stars">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={14} fill="currentColor" />
-                    ))}
+            <div className="about-split__wrap">
+              {/* Left: building image */}
+              <div className="about-split__img-side">
+                <img
+                  src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&q=80"
+                  alt="Knight Errant Building"
+                  className="about-split__img"
+                  loading="lazy"
+                />
+              </div>
+
+              {/* Right: quote */}
+              <div className="about-split__quote-side">
+                <div className="about-split__stars">
+                  {[...Array(4)].map((_, i) => (
+                    <Star key={i} size={18} fill="currentColor" />
+                  ))}
+                </div>
+                <p className="about-split__quote-text">
+                  Knight Errant connected me with an amazing job opportunity quickly and
+                  professionally. Highly recommend their services!
+                </p>
+                <div className="about-split__author">
+                  <div className="about-split__avatar">
+                    <img
+                      src="https://randomuser.me/api/portraits/men/32.jpg"
+                      alt="John Doe"
+                    />
+                  </div>
+                  <div>
+                    <strong>John Doe</strong>
                   </div>
                 </div>
               </div>
@@ -71,35 +106,46 @@ export default function About() {
         </div>
       </section>
 
-      {/* Locations */}
+      {/* Locations + Google Map */}
       <section className="section about-locations" id="about-locations">
         <div className="container">
           <RevealSection>
-            <div className="section-header">
-              <div className="section-label">Where We Are</div>
-              <h2>Our Locations</h2>
-              <p>
-                Placynt operates in multiple regions, connecting job seekers and employers
-                across various industries to streamline the recruitment process effectively.
-              </p>
-            </div>
-          </RevealSection>
-
-          <RevealSection>
-            <div className="locations-grid">
-              <div className="location-card">
-                <div className="location-card__icon">
-                  <MapPin size={24} />
+            <div className="about-locations__grid">
+              {/* Left: text info */}
+              <div className="about-locations__info">
+                <h2>Our Locations</h2>
+                <p>
+                  Knight Errant operates in multiple regions, connecting job seekers and employers
+                  across various industries to streamline the recruitment process effectively.
+                </p>
+                <div className="about-loc-item">
+                  <div className="about-loc-item__label">
+                    <MapPin size={16} />
+                    Regions
+                  </div>
+                  <div className="about-loc-item__value">Delhi NCR, Pune, Kolkata</div>
                 </div>
-                <h4>Regions</h4>
-                <p>Delhi NCR, Pune, Kolkata</p>
+                <div className="about-loc-item">
+                  <div className="about-loc-item__label">
+                    <Clock size={16} />
+                    Hours
+                  </div>
+                  <div className="about-loc-item__value">10 AM – 7 PM</div>
+                </div>
               </div>
-              <div className="location-card">
-                <div className="location-card__icon">
-                  <Clock size={24} />
-                </div>
-                <h4>Hours</h4>
-                <p>10 AM - 7 PM</p>
+
+              {/* Right: Google Map */}
+              <div className="about-locations__map">
+                <iframe
+                  title="Knight Errant Location"
+                  src="https://maps.google.com/maps?q=New+Delhi+NCR,+India&hl=en&z=11&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, borderRadius: '12px' }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
             </div>
           </RevealSection>

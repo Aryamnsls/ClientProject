@@ -200,3 +200,64 @@
     animation: fadeInUp 0.3s ease;
   }
 }
+
+/* ════════════════════════════════════════════════════
+   ZYRO NAVBAR OVERRIDES
+════════════════════════════════════════════════════ */
+
+/* ── Sticky fixed positioning ── */
+#zyro-navbar-container {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+  width: 100% !important;
+}
+
+/* ── Remove white line: top-blocks outer wrapper ── */
+#zyro-navbar-container .top-blocks,
+#zyro-navbar-container .top-blocks--sticky {
+  background: transparent !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ── Remove white box from logo container ── */
+#zyro-navbar-container .block-header-logo,
+#zyro-navbar-container .block-header__logo,
+#zyro-navbar-container a.block-header-logo {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+/* ── Make logo bigger and visible ── */
+#zyro-navbar-container .block-header-logo__image {
+  width: 110px !important;
+  height: auto !important;
+  min-width: 110px !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+/* ── Search button: bigger white pill ── */
+#zyro-navbar-container .grid-button.block-header__button,
+#zyro-navbar-container a[data-element-ref="z2AIKy"] {
+  padding: 12px 32px !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  min-width: 110px !important;
+  border-radius: 24px !important;
+  letter-spacing: 0.01em !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12) !important;
+  transition: box-shadow 0.2s, background-color 0.2s !important;
+}
+
+#zyro-navbar-container a[data-element-ref="z2AIKy"]:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18) !important;
+}
+
+

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Star, Users, Award, Briefcase, Zap, ArrowRight, Quote } from 'lucide-react'
+import { Star, ArrowRight, Quote } from 'lucide-react'
 import useReveal from '../hooks/useReveal.js'
 import './Services.css'
 
@@ -10,25 +10,34 @@ function RevealSection({ className = '', children }) {
 
 const services = [
   {
-    icon: <Users size={28} />,
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80',
     title: 'Tailored Services',
     desc: 'Personalized recruitment solutions for your hiring needs.',
   },
   {
-    icon: <Award size={28} />,
+    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80',
     title: 'Industry Expertise',
     desc: 'Specializing in IT, healthcare, finance, and more sectors.',
   },
   {
-    icon: <Briefcase size={28} />,
+    image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&q=80',
     title: 'Quality Placements',
     desc: 'Ensuring the right talent for the right job.',
   },
   {
-    icon: <Zap size={28} />,
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80',
     title: 'Fast Solutions',
     desc: 'Streamlined hiring process for quick and reliable results.',
   },
+]
+
+const galleryImages = [
+  'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=500&q=80',
+  'https://images.unsplash.com/photo-1524749292158-7540c2494485?w=500&q=80',
+  'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=500&q=80',
+  'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=500&q=80',
+  'https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=500&q=80',
+  'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=500&q=80',
 ]
 
 export default function Services() {
@@ -49,20 +58,24 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* Services Grid with Images */}
       <section className="section" id="services-grid">
         <div className="container">
           <div className="services-grid">
             {services.map((service, i) => (
               <RevealSection key={i}>
-                <div className="services-card">
-                  <div className="services-card__icon">{service.icon}</div>
-                  <div className="services-card__content">
-                    <h4>{service.title}</h4>
-                    <p>{service.desc}</p>
+                <div className="services-card services-card--image">
+                  <div className="services-card__img-wrap">
+                    <img src={service.image} alt={service.title} className="services-card__img" loading="lazy" />
                   </div>
-                  <div className="services-card__arrow">
-                    <ArrowRight size={20} />
+                  <div className="services-card__body">
+                    <div className="services-card__content">
+                      <h4>{service.title}</h4>
+                      <p>{service.desc}</p>
+                    </div>
+                    <div className="services-card__arrow">
+                      <ArrowRight size={18} />
+                    </div>
                   </div>
                 </div>
               </RevealSection>
@@ -76,9 +89,13 @@ export default function Services() {
         <div className="container">
           <RevealSection>
             <div className="testimonial-card">
-              <Quote size={40} className="testimonial-card__quote" />
+              <div className="stars testimonial-card__stars">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={16} fill="currentColor" />
+                ))}
+              </div>
               <p className="testimonial-card__text">
-                Placynt made my job search effortless. Their personalized approach and
+                Knight Errant made my job search effortless. Their personalized approach and
                 expertise truly connected me with an amazing opportunity. Highly recommend
                 their services!
               </p>
@@ -86,11 +103,6 @@ export default function Services() {
                 <div className="testimonial-card__avatar">SL</div>
                 <div>
                   <strong>Sarah Lee</strong>
-                  <div className="stars">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={14} fill="currentColor" />
-                    ))}
-                  </div>
                 </div>
               </div>
             </div>
@@ -109,13 +121,10 @@ export default function Services() {
             </div>
           </RevealSection>
           <div className="gallery-grid">
-            {[1, 2, 3, 4, 5, 6].map((item) => (
-              <RevealSection key={item}>
+            {galleryImages.map((src, i) => (
+              <RevealSection key={i}>
                 <div className="gallery-item">
-                  <div className="gallery-item__inner">
-                    <Briefcase size={32} />
-                    <span>Success Story #{item}</span>
-                  </div>
+                  <img src={src} alt={`Gallery ${i + 1}`} className="gallery-item__img" loading="lazy" />
                 </div>
               </RevealSection>
             ))}

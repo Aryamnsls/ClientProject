@@ -53,18 +53,19 @@
   margin: 0 auto;
 }
 
-/* ===== SERVICES GRID ===== */
+/* ===== SERVICES GRID with images ===== */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 }
 
-.services-card {
+/* Image-based card */
+.services-card--image {
   display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 32px;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
   background: var(--white);
   border-radius: var(--radius-lg);
   border: 1px solid var(--gray-200);
@@ -73,70 +74,84 @@
   cursor: pointer;
 }
 
-.services-card:hover {
+.services-card--image:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-3px);
   border-color: var(--primary-light);
 }
 
-.services-card__icon {
-  width: 60px;
-  height: 60px;
-  min-width: 60px;
-  border-radius: var(--radius-md);
-  background: linear-gradient(135deg, rgba(103,61,230,0.1), rgba(53,125,249,0.08));
-  color: var(--primary);
+.services-card__img-wrap {
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: var(--gray-100);
+}
+
+.services-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.services-card--image:hover .services-card__img {
+  transform: scale(1.04);
+}
+
+.services-card__body {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 12px;
+  padding: 18px 20px;
 }
 
 .services-card__content h4 {
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   color: var(--dark);
+  font-size: 1rem;
 }
 
 .services-card__content p {
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   color: var(--gray-600);
+  margin: 0;
 }
 
 .services-card__arrow {
   margin-left: auto;
   color: var(--gray-400);
+  flex-shrink: 0;
   transition: var(--transition);
 }
 
-.services-card:hover .services-card__arrow {
+.services-card--image:hover .services-card__arrow {
   color: var(--primary);
   transform: translateX(4px);
 }
 
 /* ===== TESTIMONIAL ===== */
 .services-testimonial {
-  background: var(--gray-50);
+  background: #4B79A1;
 }
 
 .testimonial-card {
-  max-width: 680px;
+  max-width: 640px;
   margin: 0 auto;
   text-align: center;
-  padding: 48px;
-  background: var(--white);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-md);
+  padding: 48px 40px;
   position: relative;
 }
 
-.testimonial-card__quote {
-  color: var(--primary-light);
-  opacity: 0.3;
+.testimonial-card__stars {
+  color: #fbbf24;
+  justify-content: center;
   margin-bottom: 16px;
 }
 
 .testimonial-card__text {
-  font-size: 1.1rem;
-  color: var(--gray-700);
+  font-size: 1.05rem;
+  color: #fff;
   line-height: 1.8;
   font-style: italic;
   margin-bottom: 28px;
@@ -153,8 +168,8 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: var(--white);
+  background: rgba(255,255,255,0.25);
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -164,8 +179,8 @@
 
 .testimonial-card__author strong {
   display: block;
-  margin-bottom: 4px;
-  color: var(--dark);
+  color: #fff;
+  font-size: 0.95rem;
 }
 
 /* ===== GALLERY ===== */
@@ -176,38 +191,34 @@
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 16px;
+  margin-top: 32px;
 }
 
 .gallery-item {
   aspect-ratio: 4/3;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: linear-gradient(135deg, #f0edff, #e8e4ff);
+  background: var(--gray-100);
   transition: var(--transition);
   cursor: pointer;
 }
 
 .gallery-item:hover {
-  transform: scale(1.03);
+  transform: scale(1.02);
   box-shadow: var(--shadow-lg);
 }
 
-.gallery-item__inner {
+.gallery-item__img {
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  color: var(--primary);
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
 }
 
-.gallery-item__inner span {
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--gray-600);
+.gallery-item:hover .gallery-item__img {
+  transform: scale(1.06);
 }
 
 /* ===== RESPONSIVE ===== */
