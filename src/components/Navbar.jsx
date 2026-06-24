@@ -1,91 +1,42 @@
-import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { Search, Menu, X } from 'lucide-react'
-import './Navbar.css'
-
-const navLinks = [
-  { path: '/', label: 'Home' },
-  { path: '/services', label: 'Services' },
-  { path: '/about', label: 'About' },
-  { path: '/contact', label: 'Contact' },
-]
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-  const [mobileOpen, setMobileOpen] = useState(false)
-  const [searchOpen, setSearchOpen] = useState(false)
-  const location = useLocation()
+  const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll);
+    onScroll(); // initialize
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   useEffect(() => {
-    setMobileOpen(false)
-    setSearchOpen(false)
-  }, [location])
+    const handleClick = (e) => {
+      const link = e.target.closest('a');
+      if (link && link.href) {
+        const url = new URL(link.href);
+        if (url.origin === window.location.origin || url.origin === 'https://placynt.com') {
+          e.preventDefault();
+          let path = url.pathname;
+          navigate(path);
+          window.scrollTo(0, 0);
+        }
+      }
+    };
+    
+    const nav = document.getElementById('zyro-navbar-container');
+    if (nav) {
+        nav.addEventListener('click', handleClick);
+        return () => nav.removeEventListener('click', handleClick);
+    }
+  }, [navigate]);
 
   return (
-    <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
-      <div className="container navbar__inner">
-        <Link to="/" className="navbar__brand" id="nav-logo">
-          <div className="navbar__logo-icon">P</div>
-          <span className="navbar__logo-text">Placynt</span>
-        </Link>
-
-        <nav className={`navbar__nav ${mobileOpen ? 'navbar__nav--open' : ''}`} id="nav-menu">
-          <ul className="navbar__list">
-            {navLinks.map((link) => (
-              <li key={link.path}>
-                <Link
-                  to={link.path}
-                  className={`navbar__link ${location.pathname === link.path ? 'navbar__link--active' : ''}`}
-                  id={`nav-link-${link.label.toLowerCase()}`}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className="navbar__actions">
-          <button
-            className="navbar__search-btn"
-            onClick={() => setSearchOpen(!searchOpen)}
-            aria-label="Search"
-            id="nav-search-btn"
-          >
-            <Search size={20} />
-          </button>
-          <button
-            className="navbar__toggle"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-            id="nav-toggle-btn"
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </div>
-
-      {searchOpen && (
-        <div className="navbar__search-bar">
-          <div className="container">
-            <input
-              type="text"
-              placeholder="Search..."
-              className="navbar__search-input"
-              autoFocus
-              id="nav-search-input"
-            />
-          </div>
-        </div>
-      )}
-
-      {mobileOpen && <div className="navbar__overlay" onClick={() => setMobileOpen(false)} />}
-    </header>
-  )
+    <div 
+        id="zyro-navbar-container"
+        dangerouslySetInnerHTML={{ __html: `<div class="top-blocks--sticky top-blocks"><!----><header class="block-header" style="--nav-link-font-weight:400;--nav-link-text-color:#0d141a;--nav-link-text-color-hover:#0d141a;--header-height-mobile:74px;--width:1240px;--padding-top:30px;--padding:30px 16px 30px 16px;--padding-right:16px;--padding-bottom:30px;--padding-left:16px;--m-padding-top:24px;--m-padding:24px 16px 24px 16px;--m-padding-right:16px;--m-padding-bottom:24px;--m-padding-left:16px;--logo-width:41px;--cartIconSize:24px;--link-spacing:32px;--m-logo-width:76.23369598388672px;--m-link-spacing:20px;--element-spacing:36px;--contrastBackgroundColor:rgb(224, 224, 224);--background-color:\${scrolled ? &quot;rgb(255, 255, 255)&quot; : &quot;transparent&quot;};" backgroundcolorcontrast="rgb(224, 224, 224)" height="112" is-in-preview-mode="false" is-preview-mobile-view="false" data-v-06cc56f8=""><div class="background" style="--background-color: transparent;" data-v-06cc56f8=""></div><!--[--><div class="block-header-layout-desktop block-header-layout-desktop--desktop-3" style="--v5c616aa5:min-content auto repeat(1, min-content);--v2e94a9f4:0px;" data-v-c1535ecd=""><!--[--><a class="block-header-logo block-header__logo" href="https://placynt.com/" data-v-06cc56f8="" style="--v6f401cb2:41px;--v5ef47fbb:41px;--b298f7c8:24px;--b1fe0892:24;--v6313685a:400;--v66b767ed:76.23369598388672px;--v56669be0:76px;--v00407601:24px;" data-v-2fe39434=""><img class="block-header-logo__image" src="./Placynt - Your Trusted Placement Agency for Top Talent _ Placynt_files/chatgpt-image-jun1-15-2026-01_34_47-pm-Ra4mBLWY5EAp8gup.png" alt="Placynt logo" data-v-2fe39434="" data-qa="builder-siteheader-img-logo"></a><!--]--><!--[--><nav class="block-header__nav" data-v-06cc56f8=""><ul class="block-header__nav-links" data-v-06cc56f8="" data-qa="builder-siteheader-emptyspace"><!--[--><li class="block-header-item" data-v-06cc56f8="" data-v-f7e431f3=""><label class="block-header-item__label" data-v-f7e431f3=""><!----><div class="item-content-wrapper item-content-wrapper--active block-header-item__item" aria-haspopup="false" data-v-f7e431f3="" data-v-76d5a5f3="" data-qa="navigation-item-home"><a class="item-content" target="" href="https://placynt.com/" data-v-76d5a5f3="" data-qa="navigationblock-page-active-home">Home</a><!----></div><!----></label></li><li class="block-header-item" data-v-06cc56f8="" data-v-f7e431f3=""><label class="block-header-item__label" data-v-f7e431f3=""><!----><div class="item-content-wrapper block-header-item__item" aria-haspopup="false" data-v-f7e431f3="" data-v-76d5a5f3="" data-qa="navigation-item-services"><a class="item-content" target="" href="https://placynt.com/services" data-v-76d5a5f3="" data-qa="navigationblock-page-services">Services</a><!----></div><!----></label></li><li class="block-header-item" data-v-06cc56f8="" data-v-f7e431f3=""><label class="block-header-item__label" data-v-f7e431f3=""><!----><div class="item-content-wrapper block-header-item__item" aria-haspopup="false" data-v-f7e431f3="" data-v-76d5a5f3="" data-qa="navigation-item-about"><a class="item-content" target="" href="https://placynt.com/about" data-v-76d5a5f3="" data-qa="navigationblock-page-about">About</a><!----></div><!----></label></li><li class="block-header-item" data-v-06cc56f8="" data-v-f7e431f3=""><label class="block-header-item__label" data-v-f7e431f3=""><!----><div class="item-content-wrapper block-header-item__item" aria-haspopup="false" data-v-f7e431f3="" data-v-76d5a5f3="" data-qa="navigation-item-contact"><a class="item-content" target="" href="https://placynt.com/contact" data-v-76d5a5f3="" data-qa="navigationblock-page-contact">Contact</a><!----></div><!----></label></li><!--]--></ul></nav><!--]--><div class="block-header-layout-desktop__right-side" data-v-c1535ecd=""><!--[--><!--]--><!--[--><!--]--><!--[--><!--]--><!--[--><a href="https://placynt.com/" target="_blank" rel="nofollow" class="grid-button grid-button--primary block-header__button" aria-hidden="false" style="--border-radius:17px;--border-width:0px;--background-color:rgb(255, 255, 255);--font-color:rgb(0, 0, 0);--border-color:rgb(255, 255, 255);--background-color-hover:rgb(29, 30, 32);--font-color-hover:rgb(255, 255, 255);--border-color-hover:rgb(0, 0, 0);--m-height:0vw;--m-width:0vw;" data-element-ref="z2AIKy" data-v-06cc56f8="" data-v-297de5e8="">Search</a><!--]--></div></div><div class="block-header-layout-mobile block-header-layout-mobile--mobile-1" style="--v5c616aa5:min-content auto repeat(1, min-content);--v2e94a9f4:0px;" data-v-c1535ecd=""><!--[--><a class="block-header-logo block-header__logo" href="https://placynt.com/" data-v-06cc56f8="" style="--v6f401cb2:41px;--v5ef47fbb:41px;--b298f7c8:24px;--b1fe0892:24;--v6313685a:400;--v66b767ed:76.23369598388672px;--v56669be0:76px;--v00407601:24px;" data-v-2fe39434=""><img class="block-header-logo__image" src="./Placynt - Your Trusted Placement Agency for Top Talent _ Placynt_files/chatgpt-image-jun1-15-2026-01_34_47-pm-Ra4mBLWY5EAp8gup.png" alt="Placynt logo" data-v-2fe39434="" data-qa="builder-siteheader-img-logo"></a><!--]--><!--[--><!--]--><!--[--><button type="button" class="burger block-header__hamburger-menu" title="Menu" data-v-06cc56f8="" style="--v63017ab5:var(--nav-link-text-color);" data-v-43ca5418="" data-qa="builder-siteheader-btn-hamburger"><span class="burger__bun" data-v-43ca5418=""></span><span class="burger__meat" data-v-43ca5418=""></span><span class="burger__bun" data-v-43ca5418=""></span></button><!--]--><div class="block-header-layout-mobile__dropdown--link-align-right block-header-layout-mobile__dropdown" data-v-c1535ecd=""><!--[--><nav class="block-header__nav" data-v-06cc56f8=""><ul class="block-header__nav-links" data-v-06cc56f8="" data-qa="builder-siteheader-emptyspace"><!--[--><li class="block-header-item" data-v-06cc56f8="" data-v-f7e431f3=""><label class="block-header-item__label" data-v-f7e431f3=""><!----><div class="item-content-wrapper item-content-wrapper--active block-header-item__item" aria-haspopup="false" data-v-f7e431f3="" data-v-76d5a5f3="" data-qa="navigation-item-home"><a class="item-content" target="" href="https://placynt.com/" data-v-76d5a5f3="" data-qa="navigationblock-page-active-home">Home</a><!----></div><!----></label></li><li class="block-header-item" data-v-06cc56f8="" data-v-f7e431f3=""><label class="block-header-item__label" data-v-f7e431f3=""><!----><div class="item-content-wrapper block-header-item__item" aria-haspopup="false" data-v-f7e431f3="" data-v-76d5a5f3="" data-qa="navigation-item-services"><a class="item-content" target="" href="https://placynt.com/services" data-v-76d5a5f3="" data-qa="navigationblock-page-services">Services</a><!----></div><!----></label></li><li class="block-header-item" data-v-06cc56f8="" data-v-f7e431f3=""><label class="block-header-item__label" data-v-f7e431f3=""><!----><div class="item-content-wrapper block-header-item__item" aria-haspopup="false" data-v-f7e431f3="" data-v-76d5a5f3="" data-qa="navigation-item-about"><a class="item-content" target="" href="https://placynt.com/about" data-v-76d5a5f3="" data-qa="navigationblock-page-about">About</a><!----></div><!----></label></li><li class="block-header-item" data-v-06cc56f8="" data-v-f7e431f3=""><label class="block-header-item__label" data-v-f7e431f3=""><!----><div class="item-content-wrapper block-header-item__item" aria-haspopup="false" data-v-f7e431f3="" data-v-76d5a5f3="" data-qa="navigation-item-contact"><a class="item-content" target="" href="https://placynt.com/contact" data-v-76d5a5f3="" data-qa="navigationblock-page-contact">Contact</a><!----></div><!----></label></li><!--]--></ul></nav><!--]--><!--[--><!--]--><!--[--><!--]--><!--[--><a href="https://placynt.com/" target="_blank" rel="nofollow" class="grid-button grid-button--primary block-header__button" aria-hidden="false" style="--border-radius:17px;--border-width:0px;--background-color:rgb(255, 255, 255);--font-color:rgb(0, 0, 0);--border-color:rgb(255, 255, 255);--background-color-hover:rgb(29, 30, 32);--font-color-hover:rgb(255, 255, 255);--border-color-hover:rgb(0, 0, 0);--m-height:0vw;--m-width:0vw;" data-element-ref="z2AIKy" data-v-06cc56f8="" data-v-297de5e8="">Search</a><!--]--></div></div><!--]--></header></div>` }} 
+    />
+  );
 }
