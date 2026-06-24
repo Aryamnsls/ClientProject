@@ -1,0 +1,116 @@
+/* ===== ABOUT STATS ===== */
+.about-stats {
+  background: var(--white);
+}
+
+.about-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.about-stat-card {
+  padding: 44px 36px;
+  border-radius: var(--radius-xl);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-stat-card--primary {
+  background: linear-gradient(135deg, var(--primary), #8b5cf6);
+  color: var(--white);
+}
+
+.about-stat-card--accent {
+  background: linear-gradient(135deg, var(--accent), #60a5fa);
+  color: var(--white);
+}
+
+.about-stat-card__bg-icon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  opacity: 0.2;
+}
+
+.about-stat-card__number {
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.about-stat-card__label {
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* ===== ABOUT TESTIMONIAL ===== */
+.about-testimonial {
+  background: var(--gray-50);
+}
+
+/* ===== LOCATIONS ===== */
+.about-locations {
+  background: var(--white);
+}
+
+.locations-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.location-card {
+  text-align: center;
+  padding: 40px 28px;
+  background: var(--gray-50);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-200);
+  transition: var(--transition);
+}
+
+.location-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+  border-color: var(--primary-light);
+}
+
+.location-card__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(103,61,230,0.1), rgba(53,125,249,0.08));
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.location-card h4 {
+  margin-bottom: 8px;
+  color: var(--dark);
+}
+
+.location-card p {
+  color: var(--gray-600);
+  font-size: 0.95rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .about-stats__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .locations-grid {
+    grid-template-columns: 1fr;
+  }
+}
