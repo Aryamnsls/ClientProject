@@ -10,34 +10,33 @@ function RevealSection({ className = '', children }) {
 
 const services = [
   {
-    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1515414797016-948204e0696a?w=600&q=80',
     title: 'Tailored Services',
     desc: 'Personalized recruitment solutions for your hiring needs.',
   },
   {
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1683459269730-f8eb2b5c3b58?w=600&q=80',
     title: 'Industry Expertise',
     desc: 'Specializing in IT, healthcare, finance, and more sectors.',
   },
   {
-    image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1588601515934-48cd862f9955?w=600&q=80',
     title: 'Quality Placements',
     desc: 'Ensuring the right talent for the right job.',
   },
   {
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1639472676608-8bd51152c61a?w=600&q=80',
     title: 'Fast Solutions',
     desc: 'Streamlined hiring process for quick and reliable results.',
   },
 ]
 
 const galleryImages = [
-  'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=500&q=80',
-  'https://images.unsplash.com/photo-1524749292158-7540c2494485?w=500&q=80',
-  'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=500&q=80',
-  'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=500&q=80',
-  'https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=500&q=80',
-  'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=500&q=80',
+  'https://images.unsplash.com/photo-1641236709017-421731ff4caf?w=600&q=80',
+  'https://images.unsplash.com/photo-1603985585179-3d71c35a537c?w=600&q=80',
+  'https://images.unsplash.com/photo-1673681142950-a37f8421eb9c?w=600&q=80',
+  'https://images.unsplash.com/photo-1579388735156-3e71549fad0b?w=600&q=80',
+  'https://images.unsplash.com/photo-1569083676317-dafd0fc965f7?w=600&q=80',
 ]
 
 export default function Services() {
@@ -95,14 +94,14 @@ export default function Services() {
                 ))}
               </div>
               <p className="testimonial-card__text">
-                Knight Errant made my job search effortless. Their personalized approach and
+                Placynt made my job search effortless. Their personalized approach and
                 expertise truly connected me with an amazing opportunity. Highly recommend
                 their services!
               </p>
               <div className="testimonial-card__author">
-                <div className="testimonial-card__avatar">SL</div>
-                <div>
-                  <strong>Sarah Lee</strong>
+                <img src="https://images.unsplash.com/photo-1696826128233-e6aba37142d8?w=100&q=80" alt="Sarah Lee" className="testimonial-card__avatar" />
+                <div className="testimonial-card__author-name">
+                  Sarah Lee
                 </div>
               </div>
             </div>
@@ -115,7 +114,6 @@ export default function Services() {
         <div className="container">
           <RevealSection>
             <div className="section-header">
-              <div className="section-label">Portfolio</div>
               <h2>Gallery</h2>
               <p>Showcasing successful placements and satisfied clients across industries.</p>
             </div>

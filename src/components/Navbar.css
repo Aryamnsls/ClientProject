@@ -213,6 +213,15 @@
   right: 0 !important;
   z-index: 1000 !important;
   width: 100% !important;
+  transition: transform 0.3s ease-in-out !important;
+}
+
+#zyro-navbar-container.navbar-hidden {
+  transform: translateY(-100%) !important;
+}
+
+#zyro-navbar-container.navbar-visible {
+  transform: translateY(0) !important;
 }
 
 /* ── Remove white line: top-blocks outer wrapper ── */
@@ -234,13 +243,36 @@
   padding: 0 !important;
 }
 
-/* ── Make logo bigger and visible ── */
+/* ── Make logo bigger and clearly visible ── */
 #zyro-navbar-container .block-header-logo__image {
-  width: 110px !important;
+  width: 160px !important;
   height: auto !important;
-  min-width: 110px !important;
+  min-width: 160px !important;
+  max-height: 140px !important;
   object-fit: contain !important;
   display: block !important;
+  image-rendering: -webkit-optimize-contrast !important;
+  image-rendering: crisp-edges !important;
+}
+
+/* Give header enough height so the bigger logo isn't clipped */
+#zyro-navbar-container .block-header {
+  height: auto !important;
+  min-height: 80px !important;
+  overflow: visible !important;
+}
+
+#zyro-navbar-container .block-header-layout-desktop,
+#zyro-navbar-container .block-header-layout-mobile {
+  overflow: visible !important;
+}
+
+#zyro-navbar-container .block-header-logo,
+#zyro-navbar-container .block-header__logo,
+#zyro-navbar-container a.block-header-logo {
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
 }
 
 /* ── Search button: bigger white pill ── */
