@@ -293,3 +293,80 @@
 }
 
 
+
+
+/* ── SMART TRANSPARENT NAVBAR ── */
+/* Default state (at the top): transparent background, white text */
+.navbar:not(.navbar--scrolled) {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+.navbar:not(.navbar--scrolled) #zyro-navbar-container .top-blocks {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Text color at the top */
+.navbar:not(.navbar--scrolled) #zyro-navbar-container .grid-text-box p,
+.navbar:not(.navbar--scrolled) #zyro-navbar-container .item-content-wrapper {
+  color: #ffffff !important;
+}
+
+/* Hamburger icon at the top */
+.navbar:not(.navbar--scrolled) #zyro-navbar-container svg {
+  fill: #ffffff !important;
+}
+
+/* Search button at the top */
+.navbar:not(.navbar--scrolled) [data-element-ref="z2AIKy"] {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Logo filter at the top (if logo is dark, invert it to white) */
+.navbar:not(.navbar--scrolled) #zyro-navbar-container img[alt*="knight"] {
+  filter: brightness(0) invert(1);
+}
+
+/* Scrolled state: Glassmorphism white */
+.navbar.navbar--scrolled {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+}
+.navbar.navbar--scrolled #zyro-navbar-container .top-blocks {
+  background: transparent !important;
+}
+
+/* MOBILE MENU FIXES */
+.block-header-layout-mobile__dropdown.mobile-menu-open {
+  display: block !important;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  z-index: 1000;
+  border-radius: 0 0 20px 20px;
+}
+.mobile-menu-open .block-header-item__label {
+  display: block;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.mobile-menu-open .block-header-item__label:last-child {
+  border-bottom: none;
+}
+.mobile-menu-open a {
+  color: #1a1a2e !important;
+  font-size: 1.1rem;
+  font-weight: 500;
+}

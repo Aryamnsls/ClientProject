@@ -1,0 +1,10 @@
+
+/* --- HERO FIXES --- */
+.block--desktop-first-visible {
+  padding-top: calc(var(--header-height, 112px) + 60px) !important;
+}
+.block--desktop-first-visible .grid-text-box h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem) !important;
+  line-height: 1.1 !important;
+  margin-bottom: 20px !important;
+}

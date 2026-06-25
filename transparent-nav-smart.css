@@ -1,0 +1,47 @@
+
+/* ── SMART TRANSPARENT NAVBAR ── */
+/* Default state (at the top): transparent background, white text */
+.navbar:not(.navbar--scrolled) {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+.navbar:not(.navbar--scrolled) #zyro-navbar-container .top-blocks {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Text color at the top */
+.navbar:not(.navbar--scrolled) #zyro-navbar-container .grid-text-box p,
+.navbar:not(.navbar--scrolled) #zyro-navbar-container .item-content-wrapper {
+  color: #ffffff !important;
+}
+
+/* Hamburger icon at the top */
+.navbar:not(.navbar--scrolled) #zyro-navbar-container svg {
+  fill: #ffffff !important;
+}
+
+/* Search button at the top */
+.navbar:not(.navbar--scrolled) [data-element-ref="z2AIKy"] {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Logo filter at the top (if logo is dark, invert it to white) */
+.navbar:not(.navbar--scrolled) #zyro-navbar-container img[alt*="knight"] {
+  filter: brightness(0) invert(1);
+}
+
+/* Scrolled state: Glassmorphism white */
+.navbar.navbar--scrolled {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+}
+.navbar.navbar--scrolled #zyro-navbar-container .top-blocks {
+  background: transparent !important;
+}

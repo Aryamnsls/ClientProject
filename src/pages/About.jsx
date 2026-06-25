@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react'
 import { Star, MapPin, Clock } from 'lucide-react'
 import useReveal from '../hooks/useReveal.js'
 import './About.css'
@@ -7,7 +8,53 @@ function RevealSection({ className = '', children }) {
   return <div ref={ref} className={`reveal ${className}`}>{children}</div>
 }
 
+function AnimatedCounter({ target, suffix = '' }) {
+  const [count, setCount] = useState(0)
+  const [trigger, setTrigger] = useState(0)
+  const ref = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) setTrigger(t => t + 1)
+    }, { threshold: 0.5 })
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (trigger === 0) return
+    let start = 0
+    const duration = 2000
+    const increment = target / (duration / 16)
+    const timer = setInterval(() => {
+      start += increment
+      if (start >= target) {
+        setCount(target)
+        clearInterval(timer)
+      } else {
+        setCount(Math.ceil(start))
+      }
+    }, 16)
+    return () => clearInterval(timer)
+  }, [trigger, target])
+
+  return (
+    <span 
+      ref={ref} 
+      className="animated-counter" 
+      onClick={() => setTrigger(t => t + 1)}
+      style={{ cursor: 'pointer' }}
+      title="Click to recount!"
+    >
+      {count}{suffix}
+    </span>
+  )
+}
+
 export default function About() {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <div className="about-page">
       {/* Hero */}
@@ -37,11 +84,15 @@ export default function About() {
                 <p className="about-intro__tagline">Knight Errant: Your Partner in Recruitment Excellence.</p>
                 <div className="about-stats-row">
                   <div className="about-stat-inline">
-                    <div className="about-stat-inline__number">150+</div>
+                    <div className="about-stat-inline__number">
+                      <AnimatedCounter target={150} suffix="+" />
+                    </div>
                     <div className="about-stat-inline__label">Top Candidates</div>
                   </div>
                   <div className="about-stat-inline">
-                    <div className="about-stat-inline__number">15</div>
+                    <div className="about-stat-inline__number">
+                      <AnimatedCounter target={15} />
+                    </div>
                     <div className="about-stat-inline__label">Trusted by Employers</div>
                   </div>
                 </div>
@@ -51,11 +102,11 @@ export default function About() {
 
           {/* Office Image */}
           <RevealSection>
-            <div className="about-office-img-wrap">
+            <div className="about-office-img-wrap modern-img-wrap">
               <img
                 src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200&q=85"
                 alt="Knight Errant Office"
-                className="about-office-img"
+                className="about-office-img modern-img"
                 loading="lazy"
               />
             </div>
@@ -67,27 +118,27 @@ export default function About() {
       <section className="section about-split-testimonial" id="about-testimonial">
         <div className="container">
           <RevealSection>
-            <div className="about-split__wrap">
+            <div className="about-split__wrap modern-split">
               {/* Left: building image */}
               <div className="about-split__img-side">
                 <img
-                  src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&q=80"
-                  alt="Knight Errant Building"
-                  className="about-split__img"
+                  src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=700&q=80"
+                  alt="Professional Office Meeting"
+                  className="about-split__img modern-img"
                   loading="lazy"
                 />
               </div>
 
               {/* Right: quote */}
-              <div className="about-split__quote-side">
+              <div className="about-split__quote-side modern-quote-panel">
                 <div className="about-split__stars">
-                  {[...Array(4)].map((_, i) => (
-                    <Star key={i} size={18} fill="currentColor" />
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={18} fill="#fbbf24" />
                   ))}
                 </div>
                 <p className="about-split__quote-text">
-                  Knight Errant connected me with an amazing job opportunity quickly and
-                  professionally. Highly recommend their services!
+                  "Knight Errant connected me with an amazing job opportunity quickly and
+                  professionally. Highly recommend their services!"
                 </p>
                 <div className="about-split__author">
                   <div className="about-split__avatar">
@@ -110,7 +161,7 @@ export default function About() {
       <section className="section about-locations" id="about-locations">
         <div className="container">
           <RevealSection>
-            <div className="about-locations__grid">
+            <div className="about-locations__grid modern-locations">
               {/* Left: text info */}
               <div className="about-locations__info">
                 <h2>Our Locations</h2>
@@ -135,13 +186,13 @@ export default function About() {
               </div>
 
               {/* Right: Google Map */}
-              <div className="about-locations__map">
+              <div className="about-locations__map modern-map">
                 <iframe
                   title="Knight Errant Location"
                   src="https://maps.google.com/maps?q=New+Delhi+NCR,+India&hl=en&z=11&output=embed"
                   width="100%"
                   height="100%"
-                  style={{ border: 0, borderRadius: '12px' }}
+                  style={{ border: 0, borderRadius: '16px', filter: 'contrast(1.1)' }}
                   allowFullScreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"

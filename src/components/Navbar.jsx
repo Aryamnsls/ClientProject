@@ -7,6 +7,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -72,8 +73,18 @@ export default function Navbar() {
         setSearchOpen(true);
         return;
       }
+
+      const burger = e.target.closest('.burger');
+      if (burger) {
+        e.preventDefault();
+        e.stopPropagation();
+        setMobileMenuOpen(prev => !prev);
+        return;
+      }
+
       const link = e.target.closest('a');
       if (link && link.href) {
+        setMobileMenuOpen(false);
         const url = new URL(link.href);
         if (url.origin === window.location.origin || url.origin === 'https://knighterrant.com') {
           e.preventDefault();
@@ -91,6 +102,17 @@ export default function Navbar() {
 
   const bgColor = scrolled ? 'rgb(255,255,255)' : 'transparent';
   const boxShadow = scrolled ? '0 2px 20px rgba(0,0,0,0.08)' : 'none';
+
+  useEffect(() => {
+    const dropdown = document.querySelector('.block-header-layout-mobile__dropdown');
+    if (dropdown) {
+      if (mobileMenuOpen) {
+        dropdown.classList.add('mobile-menu-open');
+      } else {
+        dropdown.classList.remove('mobile-menu-open');
+      }
+    }
+  }, [mobileMenuOpen]);
 
   return (
     <>

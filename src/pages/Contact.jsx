@@ -71,7 +71,6 @@ export default function Contact() {
                 ) : (
                   <form onSubmit={handleSubmit} className="contact-form" id="contact-form">
                     <div className="contact-form__group">
-                      <label htmlFor="contact-name">Your First Name</label>
                       <input
                         type="text"
                         id="contact-name"
@@ -80,9 +79,9 @@ export default function Contact() {
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         required
                       />
+                      <label htmlFor="contact-name">Your First Name</label>
                     </div>
                     <div className="contact-form__group">
-                      <label htmlFor="contact-email">Your Email Address *</label>
                       <input
                         type="email"
                         id="contact-email"
@@ -91,9 +90,9 @@ export default function Contact() {
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         required
                       />
+                      <label htmlFor="contact-email">Your Email Address *</label>
                     </div>
                     <div className="contact-form__group">
-                      <label htmlFor="contact-message">Your Message *</label>
                       <textarea
                         id="contact-message"
                         rows="5"
@@ -102,6 +101,7 @@ export default function Contact() {
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         required
                       />
+                      <label htmlFor="contact-message">Your Message *</label>
                     </div>
                     <button
                       type="submit"

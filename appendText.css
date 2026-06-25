@@ -1,0 +1,7 @@
+
+/* FIX QUOTE PANEL TEXT VISIBILITY */
+.modern-quote-panel .about-split__quote-text,
+.modern-quote-panel .about-split__author strong,
+.modern-quote-panel .about-split__author {
+  color: #1a1a2e !important;
+}

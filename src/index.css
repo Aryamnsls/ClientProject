@@ -399,3 +399,122 @@ p {
     padding: 48px 0;
   }
 }
+
+/* Cleared to let Zyro CSS take over */
+
+/* ==========================================================================
+   DYNAMIC UI ENHANCEMENTS FOR HOME PAGE
+   ========================================================================== */
+
+/* 1. Global Transitions for Smooth Interactions */
+a, button, .grid-button, img, .block, .grid-image {
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+/* 2. Glassmorphism & Depth for Overlays & Navigation */
+.block-background__overlay {
+  background: linear-gradient(135deg, rgba(20, 25, 35, 0.35) 0%, rgba(15, 20, 30, 0.6) 100%) !important;
+  backdrop-filter: blur(3px) !important;
+  -webkit-backdrop-filter: blur(3px) !important;
+}
+
+#zyro-navbar-container .top-blocks {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* 3. Button Hover Effects (Dynamic Scale & Glow) */
+.grid-button, a[data-element-ref*="button"], a.btn {
+  transform: translateY(0) scale(1) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+  border-radius: 50px !important; /* Force pill shape for modern look */
+}
+
+.grid-button:hover, a[data-element-ref*="button"]:hover, a.btn:hover {
+  transform: translateY(-4px) scale(1.03) !important;
+  box-shadow: 0 15px 30px rgba(75, 121, 161, 0.4) !important;
+  filter: brightness(1.1) !important;
+}
+
+.grid-button:active, a[data-element-ref*="button"]:active {
+  transform: translateY(1px) scale(0.98) !important;
+}
+
+/* 4. Enhanced Typography (Text Shadows & Contrast) */
+/* Adding soft text-shadow to big headings on hero sections so they pop over backgrounds */
+.grid-text-box h1, .grid-text-box h2, .grid-text-box h3, .grid-text-box h5 {
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* Specific enhancement for the main Hero Header (H1) */
+.grid-text-box h1 {
+  text-shadow: 0 10px 30px rgba(0,0,0,0.4) !important;
+  animation: float-text 6s ease-in-out infinite alternate !important;
+}
+
+/* Removing text shadow from dark text for cleaner look */
+.grid-text-box h6, p.body {
+  text-shadow: none !important;
+}
+
+/* 5. Image & Card Dynamic Hover */
+/* Adding soft rounded corners and hover lift to images */
+.grid-image img, img {
+  border-radius: 16px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
+}
+
+.grid-image:hover img, .grid-image:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Add subtle micro-animations to icons */
+.grid-social-icons a svg {
+  transition: transform 0.3s ease, fill 0.3s ease !important;
+}
+.grid-social-icons a:hover svg {
+  transform: scale(1.2) rotate(5deg) !important;
+  fill: #AEE1F9 !important;
+}
+
+/* 6. Form Inputs Styling */
+input, textarea {
+  transition: all 0.3s ease !important;
+}
+input:focus, textarea:focus {
+  transform: scale(1.01);
+  box-shadow: 0 0 0 4px rgba(75, 121, 161, 0.2) !important;
+}
+
+/* 7. Subtle Background Animations */
+@keyframes float-text {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-6px); }
+}
+
+@keyframes pulse-bg {
+  0% { opacity: 0.85; }
+  50% { opacity: 0.95; }
+  100% { opacity: 0.85; }
+}
+
+/* Add a breathing pulse to the main gradient backgrounds */
+.block-background__color[style*="gradient"] {
+  animation: pulse-bg 10s infinite ease-in-out !important;
+}
+
+/* --- HERO FIXES --- */
+.block--desktop-first-visible {
+  padding-top: calc(var(--header-height, 112px) + 60px) !important;
+}
+.block--desktop-first-visible .grid-text-box h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem) !important;
+  line-height: 1.1 !important;
+  margin-bottom: 20px !important;
+}
+

@@ -233,3 +233,54 @@
     font-size: 2rem;
   }
 }
+
+/* ── MODERN ABOUT UPGRADES ── */
+.modern-img {
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+.modern-img-wrap:hover .modern-img {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.15);
+}
+.modern-quote-panel {
+  background: var(--white);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  position: relative;
+  z-index: 2;
+  transform: translateX(-40px);
+  transition: transform 0.3s ease;
+}
+.modern-quote-panel:hover {
+  transform: translateX(-40px) translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+@media (max-width: 900px) {
+  .modern-quote-panel {
+    transform: translateX(0);
+    margin-top: -30px;
+  }
+  .modern-quote-panel:hover {
+    transform: translateY(-5px);
+  }
+}
+.modern-locations {
+  background: var(--white);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+}
+.animated-counter {
+  display: inline-block;
+  min-width: 2ch;
+}
+
+/* FIX QUOTE PANEL TEXT VISIBILITY */
+.modern-quote-panel .about-split__quote-text,
+.modern-quote-panel .about-split__author strong,
+.modern-quote-panel .about-split__author {
+  color: #1a1a2e !important;
+}
