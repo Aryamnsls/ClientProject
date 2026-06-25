@@ -34,7 +34,7 @@ export default function Footer() {
         {/* Column 2 */}
         <div className="footer-custom__col footer-custom__col--recruit">
           <h6 className="footer-custom__subheading">RECRUITMENT</h6>
-          <p className="footer-custom__text">7004404527</p>
+          <p className="footer-custom__text">9793204805</p>
         </div>
 
         {/* Column 3 */}

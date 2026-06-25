@@ -116,3 +116,9 @@ input:focus, textarea:focus {
   margin-bottom: 20px !important;
 }
 
+
+/* Fix navbar covering home hero */
+#zyro-home-container .block-layout:first-of-type,
+#zyro-home-container > div > astro-island > div > div:first-child {
+  padding-top: 140px !important;
+}

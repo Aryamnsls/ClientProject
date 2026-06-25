@@ -189,7 +189,7 @@ export default function About() {
               <div className="about-locations__map modern-map">
                 <iframe
                   title="Knight Errant Location"
-                  src="https://maps.google.com/maps?q=New+Delhi+NCR,+India&hl=en&z=11&output=embed"
+                  src="https://maps.google.com/maps?q=India&hl=en&z=5&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0, borderRadius: '16px', filter: 'contrast(1.1)' }}
