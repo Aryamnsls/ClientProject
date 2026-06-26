@@ -81,8 +81,8 @@ const SITE_CONTENT = [
     title: 'Our Locations',
     path: '/about',
     category: 'About',
-    keywords: ['locations', 'delhi', 'ncr', 'pune', 'kolkata', 'regions', 'offices'],
-    description: 'Knight Errant operates in Delhi NCR, Pune, and Kolkata, serving multiple regions.',
+    keywords: ['locations', 'pan india', 'regions', 'offices'],
+    description: 'Knight Errant operates PAN India, serving multiple regions.',
   },
   {
     title: 'Working Hours',
