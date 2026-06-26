@@ -146,7 +146,7 @@ export default function Contact() {
                     <MapPin size={15} />
                     Location
                   </div>
-                  <div className="contact-info-detail__value">Delhi NCR, Pune, Kolkata</div>
+                  <div className="contact-info-detail__value">PAN India</div>
                 </div>
 
                 <div className="contact-info-detail">

@@ -174,7 +174,7 @@ export default function About() {
                     <MapPin size={16} />
                     Regions
                   </div>
-                  <div className="about-loc-item__value">Delhi NCR, Pune, Kolkata</div>
+                  <div className="about-loc-item__value">PAN India</div>
                 </div>
                 <div className="about-loc-item">
                   <div className="about-loc-item__label">
