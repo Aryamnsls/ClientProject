@@ -94,7 +94,7 @@ export default function Services() {
                 ))}
               </div>
               <p className="testimonial-card__text">
-                Knight Errant made my job search effortless. Their personalized approach and
+                Placynt made my job search effortless. Their personalized approach and
                 expertise truly connected me with an amazing opportunity. Highly recommend
                 their services!
               </p>
